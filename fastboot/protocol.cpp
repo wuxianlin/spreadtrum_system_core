@@ -86,6 +86,11 @@ static int64_t check_response(Transport* transport, uint32_t size, char* respons
             return 0;
         }
 
+        if (!memcmp(status, "SN", 2)) {
+            fprintf(stderr,"%s", status + 2);
+            continue;
+        }
+
         if (!memcmp(status, "FAIL", 4)) {
             if (r > 4) {
                 g_error = android::base::StringPrintf("remote: %s", status + 4);

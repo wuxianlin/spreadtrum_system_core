@@ -1309,6 +1309,7 @@ static std::string next_arg(std::vector<std::string>* args) {
 static void do_bypass_unlock_command(std::vector<std::string>* args) {
     if (args->empty()) syntax_error("missing unlock_bootloader request");
 
+    std::string cmd = next_arg(args);
     std::string filename = next_arg(args);
 
     int64_t sz;
